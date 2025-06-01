@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgbw30t3t305q"]
+
+[ext_resource type="Script" uid="uid://cwhxbda5javsl" path="res://Scenes/Game/game.gd" id="1_qikps"]
+[ext_resource type="PackedScene" uid="uid://di4furit0fybd" path="res://Scenes/Game/Player/Player.tscn" id="2_i1e5p"]
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Scenes/Game/Item/item.tscn" id="3_ciybh"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("red_spawn", "purple_spawn", "yellow_spawn", "green_spawn")]
+script = ExtResource("1_qikps")
+player_character = ExtResource("2_i1e5p")
+red_spawn = NodePath("RedSpawn")
+purple_spawn = NodePath("PurpleSpawn")
+yellow_spawn = NodePath("YellowSpawn")
+green_spawn = NodePath("GreenSpawn")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("3_ciybh")]
+position = Vector2(348, 195)
+linear_damp = 5.0
+
+[node name="RedSpawn" type="Marker2D" parent="."]
+position = Vector2(150, 150)
+
+[node name="PurpleSpawn" type="Marker2D" parent="."]
+position = Vector2(1761, 136)
+
+[node name="YellowSpawn" type="Marker2D" parent="."]
+position = Vector2(1723, 968)
+
+[node name="GreenSpawn" type="Marker2D" parent="."]
+position = Vector2(233, 983)

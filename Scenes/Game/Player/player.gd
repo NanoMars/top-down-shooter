@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const CONTROLLER_ID := 0
+var controller_id: int = -1
 const DEADZONE := 0.1
 
 var current_item: Node = null
@@ -22,8 +22,8 @@ func _ready() -> void:
 func _physics_process(delta):
 	# Movement and aiming
 	var move_input: Vector2 = Vector2(
-		Input.get_joy_axis(CONTROLLER_ID, JOY_AXIS_LEFT_X),
-		Input.get_joy_axis(CONTROLLER_ID, JOY_AXIS_LEFT_Y)
+		Input.get_joy_axis(controller_id, JOY_AXIS_LEFT_X),
+		Input.get_joy_axis(controller_id, JOY_AXIS_LEFT_Y)
 	)
 	if move_input.length() > DEADZONE:
 		velocity = velocity.move_toward(
@@ -39,22 +39,22 @@ func _physics_process(delta):
 	move_and_slide()
 
 	var aim_input: Vector2 = Vector2(
-		Input.get_joy_axis(CONTROLLER_ID, JOY_AXIS_RIGHT_X),
-		Input.get_joy_axis(CONTROLLER_ID, JOY_AXIS_RIGHT_Y)
+		Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_X),
+		Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_Y)
 	)
 	if aim_input.length() > DEADZONE:
 		rotation = aim_input.angle()
 
 	# Item interaction
 
-	if Input.get_joy_axis(CONTROLLER_ID, use_button) > 0.5:
+	if Input.get_joy_axis(controller_id, use_button) > 0.5:
 		if current_item and not holding_use :
 			current_item.use()
 		holding_use = true
 	else:
 		holding_use = false
 
-	if Input.is_joy_button_pressed(CONTROLLER_ID, drop_button):
+	if Input.is_joy_button_pressed(controller_id, drop_button):
 		if current_item and not holding_drop:
 			drop_item()
 		holding_drop = true
