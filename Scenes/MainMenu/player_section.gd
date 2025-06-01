@@ -16,6 +16,8 @@ var spring_velocity: float = 0.0
 @export var player_label: Label
 @export var press_start_label: Label
 
+@export var game_scene: PackedScene
+
 func _ready() -> void:
 	PlayerManager.player_id_changed.connect(_on_player_id_changed)
 
@@ -29,8 +31,8 @@ func _process(_delta: float) -> void:
 		
 
 	if Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A) and player_id == 1:
-		if not start_button_held:
-			print("start button pressed for controller ", controller_id, "and player ", player_id)
+		if not start_button_held and PlayerManager.joined_players.size() >= 2:
+			get_tree().change_scene_to_packed(game_scene)
 			start_button_held = true
 	else:
 		start_button_held = false
@@ -53,12 +55,14 @@ func _physics_process(delta: float) -> void:
 func _on_player_id_changed(cid: int, pid: int) -> void:
 	if cid == self.controller_id:
 		player_id = pid
-		update_labels()
+	update_labels()
 
 func update_labels() -> void:
+	print("player count:", PlayerManager.joined_players.size(), "player id:", player_id)
 	player_label.text = "Player " + str(player_id)
 	
-	if player_id == 1:
+	if player_id == 1 and PlayerManager.joined_players.size() >= 2:
 		press_start_label.text = "Press A to start or B to leave"
+		print(" changing label to start")
 	else:
 		press_start_label.text = "Press B to leave"
