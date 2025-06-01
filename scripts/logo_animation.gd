@@ -1,3 +1,4 @@
+# logo_animation.gd
 extends TextureRect
 
 @export var rot_amplitude: float = 2.0

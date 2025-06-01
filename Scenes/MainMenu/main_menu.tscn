@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca8pjb2vr83ab"]
+[gd_scene load_steps=5 format=3 uid="uid://ca8pjb2vr83ab"]
 
 [ext_resource type="Texture2D" uid="uid://biofo7dy64asf" path="res://Assets/logo/logo.png" id="1_48xlc"]
 [ext_resource type="Script" uid="uid://rpgvmmvlfauk" path="res://scripts/logo_animation.gd" id="2_1ehe0"]
+[ext_resource type="Script" uid="uid://b36ecxw5085c5" path="res://Scenes/MainMenu/player_menu.gd" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://b8lnhgpiyfuxp" path="res://Scenes/MainMenu/player_section.tscn" id="4_0qgbs"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -47,7 +49,7 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(1, 1, 1, 0)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PlayerMenu" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,54 +58,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="PlayerMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(1, 1, 1, 0)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerMenu"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.8
-theme_override_constants/separation = 0
+script = ExtResource("3_1ehe0")
+player_section = ExtResource("4_0qgbs")
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
-visible = false
+[node name="ColorRect" parent="PlayerMenu/HBoxContainer" instance=ExtResource("4_0qgbs")]
 layout_mode = 2
-size_flags_horizontal = 3
-color = Color(1, 0.392157, 0.392157, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Player 1"
-horizontal_alignment = 1
-
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Press A to start"
-horizontal_alignment = 1
-
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="PlayerMenu/HBoxContainer"]
 custom_minimum_size = Vector2(122, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ColorRect2"]
+[node name="Label" type="Label" parent="PlayerMenu/HBoxContainer/ColorRect2"]
 custom_minimum_size = Vector2(122, 0)
 layout_mode = 1
 anchors_preset = 15
