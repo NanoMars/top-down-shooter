@@ -9,9 +9,11 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
 radius = 32.0624
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("pick_up_collision_shape")]
 motion_mode = 1
 script = ExtResource("1_3qydi")
+pick_up_collision_shape = NodePath("Area2D/CollisionShape2D")
+drop_impulse_strength = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
