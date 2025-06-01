@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ca8pjb2vr83ab"]
 
-[ext_resource type="Texture2D" uid="uid://ct5ll5a4kp8rp" path="res://Assets/logo/logo.png" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://biofo7dy64asf" path="res://Assets/logo/logo.png" id="1_48xlc"]
 [ext_resource type="Script" uid="uid://rpgvmmvlfauk" path="res://scripts/logo_animation.gd" id="2_1ehe0"]
 
 [node name="Control" type="Control"]

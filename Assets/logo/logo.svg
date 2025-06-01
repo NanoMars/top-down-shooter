@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 387.71 65.4">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1200 600">
   <defs>
     <style>
       .cls-1 {
@@ -12,15 +12,11 @@
       .cls-2 {
         fill: #000;
         font-family: Helvetica-Bold, Helvetica;
-        font-size: 48.78px;
+        font-size: 48.8px;
         font-weight: 700;
       }
     </style>
   </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
-    <g>
-      <text class="cls-2" transform="translate(0 41.94) scale(.99 1)"><tspan x="0" y="0">top down shoiter</tspan></text>
-      <path class="cls-1" d="M227.97,45.46c4.2,0,4.2,3,8.4,3s4.2-3,8.4-3,4.2,3,8.41,3,4.2-3,8.4-3,4.2,3,8.41,3,4.2-3,8.41-3,4.2,3,8.41,3,4.2-3,8.41-3,4.2,3,8.41,3,4.2-3,8.41-3,4.2,3,8.41,3,4.2-3,8.41-3,4.2,3,8.41,3,4.2-3,8.41-3,4.2,3,8.41,3,4.21-3,8.41-3,4.2,3,8.41,3,4.21-3,8.41-3,4.21,3,8.41,3"/>
-    </g>
-  </g>
+  <text class="cls-2" transform="translate(538.5 201.4) scale(1 1)"><tspan x="0" y="0">Hack Brawlr</tspan></text>
+  <path class="cls-1" d="M667.3,205c4,0,4,3,7.9,3s4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3,4-3,7.9-3,4,3,7.9,3"/>
 </svg>
