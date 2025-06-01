@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 		update_labels()
 		
 
-	if Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A):
+	if Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A) and player_id == 1:
 		if not start_button_held:
 			print("start button pressed for controller ", controller_id, "and player ", player_id)
 			start_button_held = true
@@ -58,7 +58,7 @@ func _on_player_id_changed(cid: int, pid: int) -> void:
 func update_labels() -> void:
 	player_label.text = "Player " + str(player_id)
 	
-	if controller_id == 1:
+	if player_id == 1:
 		press_start_label.text = "Press A to start or B to leave"
 	else:
 		press_start_label.text = "Press B to leave"
