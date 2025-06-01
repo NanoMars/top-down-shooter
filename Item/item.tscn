@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp5jmne6lay2g"]
+
+[ext_resource type="Script" uid="uid://j4qxh2r1k0g3" path="res://Item/item.gd" id="1_gcssv"]
+[ext_resource type="Texture2D" uid="uid://dmlulowos8lgj" path="res://Assets/tilesheet@2.png" id="2_h0d2h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h0d2h"]
+radius = 7.0
+height = 38.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+linear_damp = 10.0
+script = ExtResource("1_gcssv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.57956, 0.298)
+texture = ExtResource("2_h0d2h")
+region_enabled = true
+region_rect = Rect2(436, 1154, 24, 124)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_h0d2h")
