@@ -69,9 +69,6 @@ size_flags_vertical = 3
 script = ExtResource("3_1ehe0")
 player_section = ExtResource("4_0qgbs")
 
-[node name="ColorRect" parent="PlayerMenu/HBoxContainer" instance=ExtResource("4_0qgbs")]
-layout_mode = 2
-
 [node name="ColorRect2" type="ColorRect" parent="PlayerMenu/HBoxContainer"]
 custom_minimum_size = Vector2(122, 0)
 layout_mode = 2

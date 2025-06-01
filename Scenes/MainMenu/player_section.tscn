@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://45p6ewpm8fnm" path="res://Scenes/MainMenu/player_section.gd" id="1_53xgr"]
 
-[node name="ColorRect" type="ColorRect"]
+[node name="ColorRect" type="ColorRect" node_paths=PackedStringArray("player_label")]
 size_flags_horizontal = 3
 color = Color(1, 0.392157, 0.392157, 1)
 script = ExtResource("1_53xgr")
+player_label = NodePath("VBoxContainer/Player id")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -15,10 +16,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Player id" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "Player 1"
+text = "Player unknown"
 horizontal_alignment = 1
 vertical_alignment = 1
 
