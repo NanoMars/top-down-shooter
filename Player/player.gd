@@ -14,6 +14,7 @@ var item_marker: Marker2D
 @export var drop_button: int = JOY_BUTTON_B
 
 var holding_use := false
+var holding_drop := false
 
 func _ready() -> void:
 	item_marker = $Marker2D
@@ -46,7 +47,7 @@ func _physics_process(delta):
 
 	# Item interaction
 
-	if Input.is_joy_button_pressed(CONTROLLER_ID, use_button):
+	if Input.get_joy_axis(CONTROLLER_ID, use_button) > 0.5:
 		if current_item and not holding_use :
 			current_item.use()
 		holding_use = true
@@ -54,7 +55,11 @@ func _physics_process(delta):
 		holding_use = false
 
 	if Input.is_joy_button_pressed(CONTROLLER_ID, drop_button):
-		drop_item()
+		if current_item and not holding_drop:
+			drop_item()
+		holding_drop = true
+	else:
+		holding_drop = false
 
 func _on_body_entered(body: Node):
 	if current_item == null and body is Item:
