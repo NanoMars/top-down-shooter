@@ -67,6 +67,7 @@ color = Color(1, 1, 1, 0)
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerMenu"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.4
 theme_override_constants/separation = 0
 script = ExtResource("3_1ehe0")
 player_section = ExtResource("4_0qgbs")
