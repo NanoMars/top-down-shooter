@@ -1,3 +1,4 @@
+# join_label.gd
 extends ColorRect
 
 func _enter_tree() -> void:

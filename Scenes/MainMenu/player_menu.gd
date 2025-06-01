@@ -10,6 +10,6 @@ func _input(event):
 		var player_id: int = PlayerManager.join_player(controller_id)
 		if player_id != -1:
 			var section: Control = player_section.instantiate()
-			section.controller_id = player_id
+			section.controller_id = controller_id
 			section.player_id = player_id
 			add_child(section)
