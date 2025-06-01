@@ -14,6 +14,7 @@ var spring_velocity: float = 0.0
 @export var spring_dampening: float = 0.2
 
 @export var player_label: Label
+@export var press_start_label: Label
 
 func _ready() -> void:
 	PlayerManager.player_id_changed.connect(_on_player_id_changed)
@@ -24,7 +25,7 @@ func _process(_delta: float) -> void:
 	
 	if not loaded and controller_id != -1 and player_id != -1:
 		loaded = true
-		player_label.text = "Player " + str(player_id)
+		update_labels()
 		
 
 	if Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A):
@@ -52,4 +53,12 @@ func _physics_process(delta: float) -> void:
 func _on_player_id_changed(cid: int, pid: int) -> void:
 	if cid == self.controller_id:
 		player_id = pid
-		player_label.text = "Player " + str(player_id)
+		update_labels()
+
+func update_labels() -> void:
+	player_label.text = "Player " + str(player_id)
+	
+	if controller_id == 1:
+		press_start_label.text = "Press A to start or B to leave"
+	else:
+		press_start_label.text = "Press B to leave"
