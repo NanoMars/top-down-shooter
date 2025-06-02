@@ -8,6 +8,8 @@ extends Item
 var button_held: bool = false
 var progress: float = 0.0
 
+@export var ammo: int = 3
+
 func press():
 	#$CPUParticles2D.emitting = true
 	button_held = true
