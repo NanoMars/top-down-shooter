@@ -1,8 +1,7 @@
+# item.gd
 extends RigidBody2D
 class_name Item
 
-@export var is_automatic := false
-@export var automatic_delay := 0.5
 var is_held := false
 
 func _ready():
@@ -24,7 +23,11 @@ func update_state():
 		collision_mask = 1
 		sleeping = false
 
-func use():
-	print("Using item: ", self.name)
-	$CPUParticles2D.emitting = true
+func press():
+	pass
 
+func press_held(delta: float):
+	pass
+	
+func release():
+	pass

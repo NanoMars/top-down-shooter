@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp5jmne6lay2g"]
 
-[ext_resource type="Script" uid="uid://j4qxh2r1k0g3" path="res://Scenes/Game/Item/item.gd" id="1_gcssv"]
+[ext_resource type="Script" uid="uid://xvf8fp7t5dv4" path="res://Scenes/Game/Items/item_example.gd" id="1_636x8"]
 [ext_resource type="Texture2D" uid="uid://q8caclgol07n" path="res://Assets/Party Popper.png" id="2_cyddd"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_modij"]
@@ -26,7 +26,7 @@ point_count = 2
 
 [node name="RigidBody2D" type="RigidBody2D"]
 linear_damp = 10.0
-script = ExtResource("1_gcssv")
+script = ExtResource("1_636x8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -40,6 +40,8 @@ rotation = 1.5708
 shape = SubResource("ConvexPolygonShape2D_modij")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(19, 0)
 emitting = false
 amount = 20

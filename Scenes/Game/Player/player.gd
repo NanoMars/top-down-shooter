@@ -1,3 +1,4 @@
+# player.gd
 extends CharacterBody2D
 var controller_id: int = -1
 const DEADZONE := 0.1
@@ -54,10 +55,14 @@ func _physics_process(delta):
 	# Item interaction
 
 	if Input.get_joy_axis(controller_id, use_button) > 0.5:
-		if current_item and not holding_use :
-			current_item.use()
+		if current_item:
+			if not holding_use :
+				current_item.press()
+			current_item.press_held(delta)
 		holding_use = true
 	else:
+		if current_item and holding_use:
+			current_item.release()
 		holding_use = false
 
 	if Input.is_joy_button_pressed(controller_id, drop_button):
@@ -67,7 +72,7 @@ func _physics_process(delta):
 	else:
 		holding_drop = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for item in dropped_items:
 		if item.global_position.distance_to(global_position) > pick_up_collision_shape.shape.get_radius():
 			dropped_items.erase(item)
