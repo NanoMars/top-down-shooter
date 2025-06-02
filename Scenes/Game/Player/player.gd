@@ -18,10 +18,15 @@ var dropped_items: Array = []
 
 @export var pick_up_collision_shape: CollisionShape2D
 
-@export var drop_impulse_strength: float = 300.0
+@export var drop_impulse_strength: float = 200.0
+@export var max_drop_time := 0.5
+@export var hold_drop_multiplier := 8
 
 var holding_use := false
 var holding_drop := false
+
+var holding_drop_time := 0.5
+
 
 func _ready() -> void:
 	item_marker = $Marker2D
@@ -66,11 +71,13 @@ func _physics_process(delta):
 		holding_use = false
 
 	if Input.is_joy_button_pressed(controller_id, drop_button):
-		if current_item and not holding_drop:
-			drop_item()
 		holding_drop = true
+		holding_drop_time += delta
 	else:
+		if current_item and holding_drop:
+			drop_item(holding_drop_time)
 		holding_drop = false
+		holding_drop_time = 0.0
 
 func _process(_delta: float) -> void:
 	for item in dropped_items:
@@ -90,13 +97,15 @@ func _finalize_pick_up(item: Node):
 	item.get_parent().remove_child(item)
 	item_marker.add_child(item)
 	item.position = Vector2.ZERO
-	item.rotation = 0.0
+	item.rotation = 0
 
 	current_item.set_held_state(true)
 
-func drop_item():
+func drop_item(speed: float = 0.0):
 	if not current_item:
 		return
+
+	speed = (max(min(speed, max_drop_time), 0.0) * hold_drop_multiplier) + 1
 
 	current_item.set_held_state(false)
 	var item = current_item
@@ -107,5 +116,5 @@ func drop_item():
 	var distance = item_marker.global_position.distance_to(global_position)
 	item.global_position = global_position + Vector2(cos(rotation), sin(rotation)) * distance
 	item.rotation = rotation
-	item.apply_impulse(Vector2(cos(rotation), sin(rotation)) * drop_impulse_strength)
+	item.apply_impulse(Vector2(cos(rotation), sin(rotation)) * drop_impulse_strength * speed)
 	dropped_items.append(item)
