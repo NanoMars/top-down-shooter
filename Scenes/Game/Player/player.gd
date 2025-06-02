@@ -21,6 +21,7 @@ var dropped_items: Array = []
 @export var drop_impulse_strength: float = 200.0
 @export var max_drop_time := 0.5
 @export var hold_drop_multiplier := 8
+@export var kill_velocity_threshold := 100.0
 
 var holding_use := false
 var holding_drop := false
@@ -49,6 +50,16 @@ func _physics_process(delta):
 		)
 
 	move_and_slide()
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.has_method("get_linear_velocity"):
+			var other_velocity = collider.get_linear_velocity()
+			var relative_velocity = (velocity - other_velocity).length()
+			if relative_velocity > kill_velocity_threshold:
+				await get_tree().process_frame
+				queue_free()
+
 
 	var aim_input: Vector2 = Vector2(
 		Input.get_joy_axis(controller_id, JOY_AXIS_RIGHT_X),
