@@ -31,4 +31,3 @@ position = Vector2(233, 983)
 
 [node name="RigidBody2D2" parent="." instance=ExtResource("4_i1e5p")]
 position = Vector2(162, 222)
-projectile_speed = 300.0

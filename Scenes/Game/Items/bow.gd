@@ -1,6 +1,7 @@
 # bow.gd
 extends Item
 
+@export var empty_texture: Texture
 @export var animation_textures: Array[Texture] = []
 @export var animation_curve: Curve
 @export var animation_duration: float = 1.0
@@ -22,12 +23,15 @@ func release():
 		var projectile: Node2D = projectile_scene.instantiate()
 		get_tree().get_root().add_child(projectile)
 		projectile.global_position = global_position
-		projectile.rotation = rotation
-		projectile.linear_velocity = Vector2(cos(rotation), sin(rotation)) * projectile_speed
+		projectile.rotation = global_rotation
+		projectile.apply_impulse(Vector2(cos(global_rotation), sin(global_rotation)) * projectile_speed)
 		ammo -= 1
 		progress = 0.0
 
 func _process(delta: float) -> void:
+	if ammo <= 0:
+		$Sprite2D.texture = empty_texture
+		return
 	if button_held:
 		progress = min(progress + delta / animation_duration, 1.0)
 	else:
