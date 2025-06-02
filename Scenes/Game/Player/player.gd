@@ -23,6 +23,8 @@ var dropped_items: Array = []
 @export var hold_drop_multiplier := 8
 @export var kill_velocity_threshold := 100.0
 
+@export var death_particles_speed_variation: float = 2
+
 var holding_use := false
 var holding_drop := false
 
@@ -58,7 +60,7 @@ func _physics_process(delta):
 			var relative_velocity = (velocity - other_velocity).length()
 			if relative_velocity > kill_velocity_threshold:
 				await get_tree().process_frame
-				queue_free()
+				kill(velocity - other_velocity)
 
 
 	var aim_input: Vector2 = Vector2(
@@ -129,3 +131,15 @@ func drop_item(speed: float = 0.0):
 	item.rotation = rotation
 	item.apply_impulse(Vector2(cos(rotation), sin(rotation)) * drop_impulse_strength * speed)
 	dropped_items.append(item)
+
+func kill(direction: Vector2 = Vector2.ZERO):
+	var particles: CPUParticles2D = $CPUParticles2D
+	remove_child(particles)
+	get_tree().get_root().add_child(particles)
+	particles.global_position = global_position
+	particles.direction = -direction.normalized()
+	particles.initial_velocity_min = direction.length()
+	particles.initial_velocity_max = direction.length() * death_particles_speed_variation
+	particles.emitting = true
+	queue_free()
+	

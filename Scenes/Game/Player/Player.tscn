@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://di4furit0fybd"]
+[gd_scene load_steps=7 format=3 uid="uid://di4furit0fybd"]
 
 [ext_resource type="Script" uid="uid://bfvkj3fd6anh8" path="res://Scenes/Game/Player/player.gd" id="1_3qydi"]
 [ext_resource type="Texture2D" uid="uid://dmlulowos8lgj" path="res://Assets/tilesheet@2.png" id="2_q3lat"]
+[ext_resource type="Texture2D" uid="uid://bla7le4p0q7yx" path="res://Assets/teardrop_red.png" id="3_i4nf8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3lat"]
 radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
 radius = 32.0624
+
+[sub_resource type="Curve" id="Curve_i4nf8"]
+_data = [Vector2(0, 0.488322), 0.0, 2.70623, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0103806), -6.58546, 0.0, 0, 0]
+point_count = 3
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("pick_up_collision_shape")]
 motion_mode = 1
@@ -47,5 +52,23 @@ texture = ExtResource("2_q3lat")
 flip_v = true
 region_enabled = true
 region_rect = Rect2(175, 1071, 35, 35)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 35
+texture = ExtResource("3_i4nf8")
+lifetime = 0.35
+one_shot = true
+explosiveness = 0.95
+emission_shape = 1
+emission_sphere_radius = 13.0
+particle_flag_align_y = true
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_i4nf8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
