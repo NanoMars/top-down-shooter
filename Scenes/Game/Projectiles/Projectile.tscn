@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cq1qefhiomr3s" path="res://Assets/Bow/Pencil.png" id="1_kp0cs"]
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="RigidBody2D" type="RigidBody2D" groups=["damaging"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

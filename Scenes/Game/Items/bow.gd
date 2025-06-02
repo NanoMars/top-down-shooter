@@ -9,6 +9,8 @@ var button_held: bool = false
 var progress: float = 0.0
 
 @export var ammo: int = 3
+@export var projectile_scene: PackedScene
+@export var projectile_speed: float = 300.0
 
 func press():
 	#$CPUParticles2D.emitting = true
@@ -16,6 +18,14 @@ func press():
 
 func release():
 	button_held = false
+	if progress >= 1.0 and ammo > 0:
+		var projectile: Node2D = projectile_scene.instantiate()
+		get_tree().get_root().add_child(projectile)
+		projectile.global_position = global_position
+		projectile.rotation = rotation
+		projectile.linear_velocity = Vector2(cos(rotation), sin(rotation)) * projectile_speed
+		ammo -= 1
+		progress = 0.0
 
 func _process(delta: float) -> void:
 	if button_held:

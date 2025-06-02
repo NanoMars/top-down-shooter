@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bp7vvm4pad43o"]
+[gd_scene load_steps=12 format=3 uid="uid://bp7vvm4pad43o"]
 
 [ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Scenes/Game/Items/item.tscn" id="1_tev6l"]
 [ext_resource type="Script" uid="uid://dvn4dh4lhml54" path="res://Scenes/Game/Items/bow.gd" id="2_pc8pi"]
@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cfbinoqjn7a6g" path="res://Assets/Bow/bow_4.png" id="6_se4th"]
 [ext_resource type="Texture2D" uid="uid://1y0bi6r83qb0" path="res://Assets/Bow/bow_5.png" id="7_o0wmy"]
 [ext_resource type="Texture2D" uid="uid://dy0r63q2bwpm3" path="res://Assets/Bow/bow_6.png" id="8_l880y"]
+[ext_resource type="PackedScene" uid="uid://b35q5vj436vhq" path="res://Scenes/Game/Projectiles/Projectile.tscn" id="9_gm7d2"]
 
-[sub_resource type="Curve" id="Curve_3l8pm"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0496272, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_tospe"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.56649, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gm7d2"]
@@ -20,9 +21,11 @@ height = 40.0
 [node name="RigidBody2D" instance=ExtResource("1_tev6l")]
 script = ExtResource("2_pc8pi")
 animation_textures = Array[Texture]([ExtResource("3_tospe"), ExtResource("4_gm7d2"), ExtResource("5_70q7l"), ExtResource("6_se4th"), ExtResource("7_o0wmy"), ExtResource("8_l880y")])
-animation_curve = SubResource("Curve_3l8pm")
+animation_curve = SubResource("Curve_tospe")
 animation_duration = 0.3
 ammo = 3
+projectile_scene = ExtResource("9_gm7d2")
+projectile_speed = 300.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_tospe")

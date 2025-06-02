@@ -103,7 +103,7 @@ func drop_item():
 	current_item = null
 	if item.get_parent():
 		item.get_parent().remove_child(item)
-	get_parent().add_child(item)
+	get_tree().get_root().add_child(item)
 	var distance = item_marker.global_position.distance_to(global_position)
 	item.global_position = global_position + Vector2(cos(rotation), sin(rotation)) * distance
 	item.rotation = rotation
