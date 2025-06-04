@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b78ynr3t8xgwi"]
+
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Scenes/Game/Items/item.tscn" id="1_i6kyw"]
+[ext_resource type="Texture2D" uid="uid://1lfre2ux5ba7" path="res://Assets/Crate.png" id="2_6ekhb"]
+[ext_resource type="Script" uid="uid://roqcogexgkr4" path="res://Scenes/Game/Items/crate.gd" id="2_qiomx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qiomx"]
+size = Vector2(42.0002, 41.9998)
+
+[node name="RigidBody2D" instance=ExtResource("1_i6kyw")]
+script = ExtResource("2_qiomx")
+break_threshold = 100.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6ekhb")
+region_enabled = false
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_qiomx")
+
+[node name="CPUParticles2D" parent="." index="2"]
+position = Vector2(0, 0)
