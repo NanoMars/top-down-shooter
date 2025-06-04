@@ -1,5 +1,5 @@
 # player_section.gd
-extends Control
+extends NinePatchRect
 
 var controller_id: int = -1
 var player_id: int = -1
@@ -17,6 +17,8 @@ var spring_velocity: float = 0.0
 @export var press_start_label: Label
 
 @export var game_scene: PackedScene
+
+@export var texture_colors: Array[Texture] = [null, null, null, null]
 
 func _ready() -> void:
 	PlayerManager.player_id_changed.connect(_on_player_id_changed)
@@ -66,3 +68,5 @@ func update_labels() -> void:
 		print(" changing label to start")
 	else:
 		press_start_label.text = "Press B to leave"
+
+	texture = texture_colors[player_id - 1]
