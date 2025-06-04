@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://cnxht1kseyl6x"]
+[gd_scene load_steps=2 format=3 uid="uid://cnxht1kseyl6x"]
 
-[node name="RedSpawn" type="Marker2D"]
+[ext_resource type="Script" uid="uid://cpypdvdu83r2g" path="res://Scenes/Game/Player/spawn_point.gd" id="1_r8f1l"]
+
+[node name="SpawnPoint" type="Marker2D" groups=["player_spawns"]]
+script = ExtResource("1_r8f1l")

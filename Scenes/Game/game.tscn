@@ -130,13 +130,9 @@ texture_region_size = Vector2i(124, 124)
 tile_size = Vector2i(124, 124)
 sources/0 = SubResource("TileSetAtlasSource_vifcx")
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("red_spawn", "purple_spawn", "yellow_spawn", "green_spawn")]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_qikps")
 player_character = ExtResource("2_i1e5p")
-red_spawn = NodePath("")
-purple_spawn = NodePath("PurpleSpawn")
-yellow_spawn = NodePath("YellowSpawn")
-green_spawn = NodePath("GreenSpawn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -155,14 +151,17 @@ linear_damp = 5.0
 [node name="RedSpawn" parent="." instance=ExtResource("5_flgk0")]
 position = Vector2(150, 150)
 
-[node name="PurpleSpawn" type="Marker2D" parent="."]
-position = Vector2(1761, 136)
+[node name="PurpleSpawn" parent="." instance=ExtResource("5_flgk0")]
+position = Vector2(223, 106)
+player_color = 1
 
-[node name="YellowSpawn" type="Marker2D" parent="."]
-position = Vector2(1723, 968)
+[node name="YellowSpawn" parent="." instance=ExtResource("5_flgk0")]
+position = Vector2(402, 94)
+player_color = 2
 
-[node name="GreenSpawn" type="Marker2D" parent="."]
-position = Vector2(233, 983)
+[node name="GreenSpawn" parent="." instance=ExtResource("5_flgk0")]
+position = Vector2(531, 111)
+player_color = 3
 
 [node name="RigidBody2D2" parent="." instance=ExtResource("4_i1e5p")]
 position = Vector2(162, 222)
