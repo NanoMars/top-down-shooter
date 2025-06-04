@@ -92,6 +92,10 @@ func _physics_process(delta):
 	)
 	if aim_input.length() > DEADZONE:
 		rotation = aim_input.angle()
+	elif move_input.length() > DEADZONE:
+		rotation = move_input.angle()
+	
+
 
 	# Item interaction
 	var raycast_distance = get_raycast_distance()
