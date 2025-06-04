@@ -1,6 +1,6 @@
 extends Item
 
-@export var break_threshold: float = 60
+@export var break_threshold: float = 30
 @export var break_particles_speed_variation: float = 3
 @export var break_particles_multiplier: float = 1.5
 @export var crate_contents: Array[PackedScene] = []
