@@ -7,13 +7,27 @@ extends Marker2D
 
 func _ready() -> void:
 	progress_bar.bar_color = ColourPalette.get_colour(player_color)
+	progress_bar.visible = false
 
 func spawn_player(spawn_time: float, _player_id: int, controller_id: int) -> void:
+	
+	progress_bar.scale = Vector2.ZERO
+
+	var bounce_in: Tween = create_tween()
+	bounce_in.tween_property(progress_bar, "scale", Vector2.ONE, spawn_time / 6).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
+
 	progress_bar.visible = true
 	progress_bar.progress = 0.0
+
 	await progress_bar.animate(spawn_time)
+
 	var player_instance: Node2D = player_scene.instantiate()
 	player_instance.controller_id = controller_id
 	player_instance.global_position = global_position
 	get_tree().get_root().add_child(player_instance)
+
+	var bounce_out: Tween = create_tween()
+	bounce_out.tween_property(progress_bar, "scale", Vector2.ZERO, spawn_time / 6).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN)
+	await bounce_out.finished
+
 	progress_bar.visible = false
