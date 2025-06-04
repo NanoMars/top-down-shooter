@@ -126,7 +126,11 @@ func _process(_delta: float) -> void:
 			break
 
 func _on_body_entered(body: Node):
-	if current_item == null and body is Item and not dropped_items.has(body):
+	
+	var other_velocity = body.get_linear_velocity() if body.has_method("get_linear_velocity") else Vector2.ZERO
+	var relative_velocity = (velocity - other_velocity).length()
+
+	if current_item == null and body is Item and not dropped_items.has(body) and relative_velocity < kill_velocity_threshold:
 		pick_up_item(body)
 
 func pick_up_item(item: Node):
