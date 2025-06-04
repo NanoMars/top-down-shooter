@@ -34,6 +34,10 @@ enabled=PackedStringArray("res://addons/fancy_editor_sounds/plugin.cfg", "res://
 
 player_spawns=""
 
+[layer_names]
+
+2d_physics/layer_1="World"
+
 [physics]
 
 2d/default_gravity=0.0
