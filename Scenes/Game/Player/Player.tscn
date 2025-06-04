@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://di4furit0fybd"]
+[gd_scene load_steps=14 format=3 uid="uid://di4furit0fybd"]
 
 [ext_resource type="Script" uid="uid://bfvkj3fd6anh8" path="res://Scenes/Game/Player/player.gd" id="1_3qydi"]
-[ext_resource type="Texture2D" uid="uid://dmlulowos8lgj" path="res://Assets/tilesheet@2.png" id="2_q3lat"]
+[ext_resource type="Texture2D" uid="uid://dcptd7eu0ujv1" path="res://Assets/Characters/red_character.png" id="2_75cta"]
+[ext_resource type="Texture2D" uid="uid://cj67txw0m14nc" path="res://Assets/Characters/purple_character.png" id="3_ckjsq"]
 [ext_resource type="Texture2D" uid="uid://bla7le4p0q7yx" path="res://Assets/teardrop_red.png" id="3_i4nf8"]
+[ext_resource type="Texture2D" uid="uid://c62lr6eb078mi" path="res://Assets/Characters/yellow_character.png" id="4_66v2b"]
+[ext_resource type="Texture2D" uid="uid://dn2ijmb6ioi6e" path="res://Assets/Characters/green_character.png" id="5_32fjh"]
+[ext_resource type="Texture2D" uid="uid://nw7xe067nmei" path="res://Assets/Characters/red_hand.png" id="6_tnxc6"]
+[ext_resource type="Texture2D" uid="uid://b3cp4i0gngaap" path="res://Assets/Characters/purple_hand.png" id="7_3j14s"]
+[ext_resource type="Texture2D" uid="uid://dqo34eph0kl7r" path="res://Assets/Characters/yellow_hand.png" id="8_1dcqm"]
+[ext_resource type="Texture2D" uid="uid://da5r7jsacdw76" path="res://Assets/Characters/green_hand.png" id="9_sqpsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3lat"]
 radius = 13.0
@@ -19,12 +26,13 @@ motion_mode = 1
 script = ExtResource("1_3qydi")
 pick_up_collision_shape = NodePath("Area2D/CollisionShape2D")
 kill_velocity_threshold = 400.0
+player_textures = Array[Texture]([ExtResource("2_75cta"), ExtResource("3_ckjsq"), ExtResource("4_66v2b"), ExtResource("5_32fjh")])
+hand_textures = Array[Texture]([ExtResource("6_tnxc6"), ExtResource("7_3j14s"), ExtResource("8_1dcqm"), ExtResource("9_sqpsa")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_q3lat")
-region_enabled = true
+texture = ExtResource("2_75cta")
 region_rect = Rect2(22, 1046, 84, 84)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,19 +46,17 @@ position = Vector2(32, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_tok1r")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Hand1" type="Sprite2D" parent="."]
 position = Vector2(16, 8)
 scale = Vector2(0.171429, 0.171429)
-texture = ExtResource("2_q3lat")
-region_enabled = true
+texture = ExtResource("6_tnxc6")
 region_rect = Rect2(175, 1071, 35, 35)
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
+[node name="Hand2" type="Sprite2D" parent="."]
 position = Vector2(16, -8)
 scale = Vector2(0.171429, 0.171429)
-texture = ExtResource("2_q3lat")
+texture = ExtResource("6_tnxc6")
 flip_v = true
-region_enabled = true
 region_rect = Rect2(175, 1071, 35, 35)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

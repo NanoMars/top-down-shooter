@@ -1,7 +1,15 @@
 # player.gd
 extends CharacterBody2D
 var controller_id: int = -1
-var player_id: int = -1
+var _player_id: int = -1
+var player_id : int :
+	get:
+		return _player_id
+	set(value):
+		if value != _player_id:
+			_player_id = value
+			call_deferred("update_colour")
+			
 const DEADZONE := 0.1
 
 var current_item: Node = null
@@ -25,6 +33,13 @@ var dropped_items: Array = []
 @export var kill_velocity_threshold := 100.0
 
 @export var death_particles_speed_variation: float = 2
+
+@onready var hand1: Sprite2D = $Hand1
+@onready var hand2: Sprite2D = $Hand2
+@onready var body_sprite: Sprite2D = $Sprite2D
+
+@export var player_textures: Array[Texture] = [null, null, null, null]
+@export var hand_textures: Array[Texture] = [null, null, null, null]
 
 var holding_use := false
 var holding_drop := false
@@ -147,4 +162,11 @@ func kill(direction: Vector2 = Vector2.ZERO):
 	drop_item(0.0)
 	emit_signal("died", controller_id, player_id)
 	queue_free()
+	
+func update_colour():
+	if player_id == -1 or body_sprite == null or hand1 == null or hand2 == null:
+		return
+	body_sprite.texture = player_textures[player_id - 1]
+	hand1.texture = hand_textures[player_id - 1]
+	hand2.texture = hand_textures[player_id - 1]
 	
