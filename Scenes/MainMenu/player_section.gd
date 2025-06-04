@@ -22,6 +22,7 @@ var spring_velocity: float = 0.0
 
 func _ready() -> void:
 	PlayerManager.player_id_changed.connect(_on_player_id_changed)
+	size_flags_stretch_ratio = 0.0
 
 func _process(_delta: float) -> void:
 	if controller_id == -1 or player_id == -1:
