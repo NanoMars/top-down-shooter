@@ -1,21 +1,28 @@
 extends Item
 
 @export var break_threshold: float = 100.0
+@export var break_particles_speed_variation: float = 1.5
 
-func _integrate_forces(state):
-	var velocity = linear_velocity
-	for i in range(state.get_contact_count()):
-		var collider = state.get_contact_collider_object(i)
+func _ready() -> void:
+	contact_monitor = true
+	max_contacts_reported = 5
+	self.body_entered.connect(_on_body_entered)
 
-		var other_velocity = collider.get_linear_velocity() if collider and collider.has_method("get_linear_velocity") else Vector2.ZERO
-
-		var relative_velocity = (velocity - other_velocity).length()
-		print("contacted with: ", collider.name, " relative velocity: ", relative_velocity)
-		if relative_velocity > break_threshold: 
-			print("Crate collided with: ", collider.name)
-			break_and_drop()
-
-
+func _on_body_entered(body: Node) -> void:
+	var other_velocity = body.get_linear_velocity() if body.has_method("get_linear_velocity") else Vector2.ZERO
+	var relative_velocity = (linear_velocity - other_velocity).length()
+	print("Relative velocity: ", relative_velocity)
+	if relative_velocity > break_threshold:
+		await get_tree().process_frame
+		break_and_drop(linear_velocity - other_velocity)
 
 func break_and_drop(direction: Vector2 = Vector2.ZERO):
-	pass
+	var particles: CPUParticles2D = $CPUParticles2D
+	remove_child(particles)
+	get_tree().get_root().add_child(particles)
+	particles.global_position = global_position
+	particles.direction = -direction.normalized()
+	particles.initial_velocity_min = direction.length()
+	particles.initial_velocity_max = direction.length() * break_particles_speed_variation
+	particles.emitting = true
+	queue_free()
