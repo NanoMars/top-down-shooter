@@ -26,6 +26,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fancy_editor_sounds/plugin.cfg", "res://addons/radial_progress/plugin.cfg")
+
 [global_group]
 
 player_spawns=""

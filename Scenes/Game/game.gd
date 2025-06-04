@@ -11,10 +11,6 @@ func _ready() -> void:
 
 	for controller_id in PlayerManager.joined_players:
 		var player_id = PlayerManager.joined_players[controller_id]
-		var player_instance = player_character.instantiate()
-
-		player_instance.controller_id = controller_id
 
 		if spawn_points.has(player_id - 1):
-			player_instance.global_position = spawn_points[player_id - 1].global_position
-		add_child(player_instance)
+			spawn_points[player_id - 1].spawn_player(3, player_id, controller_id)

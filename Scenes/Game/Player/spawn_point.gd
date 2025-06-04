@@ -2,3 +2,18 @@ extends Marker2D
 
 @export_enum("red", "purple", "yellow", "green") var player_color: int = 0
 
+@onready var progress_bar: RadialProgress = $RadialProgress
+@export var player_scene: PackedScene 
+
+func _ready() -> void:
+	progress_bar.bar_color = ColourPalette.get_colour(player_color)
+
+func spawn_player(spawn_time: float, _player_id: int, controller_id: int) -> void:
+	progress_bar.visible = true
+	progress_bar.progress = 0.0
+	await progress_bar.animate(spawn_time)
+	var player_instance: Node2D = player_scene.instantiate()
+	player_instance.controller_id = controller_id
+	player_instance.global_position = global_position
+	get_tree().get_root().add_child(player_instance)
+	progress_bar.visible = false
