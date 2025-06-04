@@ -13,13 +13,13 @@ var progress: float = 0.0
 @export var projectile_scene: PackedScene
 @export var projectile_speed: float = 300.0
 
-func press():
+func press(obstacle_distance: float):
 	#$CPUParticles2D.emitting = true
 	button_held = true
 
-func release():
+func release(obstacle_distance: float):
 	button_held = false
-	if progress >= 1.0 and ammo > 0:
+	if progress >= 1.0 and ammo > 0 and obstacle_distance == -1:
 		var projectile: Node2D = projectile_scene.instantiate()
 		get_tree().get_root().add_child(projectile)
 		projectile.global_position = global_position

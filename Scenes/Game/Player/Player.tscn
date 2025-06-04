@@ -81,4 +81,8 @@ scale_amount_min = 0.2
 scale_amount_max = 0.2
 scale_amount_curve = SubResource("Curve_i4nf8")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(60, 0)
+hit_from_inside = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

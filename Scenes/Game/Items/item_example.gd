@@ -1,10 +1,10 @@
 extends Item
 
-func press():
+func press(obstacle_distance: float):
 	$CPUParticles2D.emitting = true
 
-func press_held(delta: float):
+func press_held(delta: float, obstacle_distance: float):
 	pass
 
-func release():
+func release(obstacle_distance: float):
 	pass

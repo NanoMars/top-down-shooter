@@ -39,9 +39,12 @@ var dropped_items: Array = []
 @onready var body_sprite: Sprite2D = $Sprite2D
 @onready var blood_particles: CPUParticles2D = $CPUParticles2D
 
+@onready var raycast: RayCast2D = $RayCast2D
+
 @export var player_textures: Array[Texture] = [null, null, null, null]
 @export var hand_textures: Array[Texture] = [null, null, null, null]
 @export var blood_textures: Array[Texture] = [null, null, null, null]
+
 
 var holding_use := false
 var holding_drop := false
@@ -91,16 +94,16 @@ func _physics_process(delta):
 		rotation = aim_input.angle()
 
 	# Item interaction
-
+	var raycast_distance = get_raycast_distance()
 	if Input.get_joy_axis(controller_id, use_button) > 0.5:
 		if current_item:
 			if not holding_use :
-				current_item.press()
-			current_item.press_held(delta)
+				current_item.press(raycast_distance)
+			current_item.press_held(delta, raycast_distance)
 		holding_use = true
 	else:
 		if current_item and holding_use:
-			current_item.release()
+			current_item.release(raycast_distance)
 		holding_use = false
 
 	if Input.is_joy_button_pressed(controller_id, drop_button):
@@ -173,3 +176,9 @@ func update_colour():
 	hand2.texture = hand_textures[player_id - 1]
 	blood_particles.texture = blood_textures[player_id - 1]
 	
+func get_raycast_distance() -> float:
+	var collider = raycast.get_collider()
+	if raycast.is_colliding() and collider and collider.is_in_group("obstacles"):
+		return raycast.get_collision_point().distance_to(global_position)
+	else:
+		return -1.0

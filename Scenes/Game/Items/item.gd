@@ -23,11 +23,11 @@ func update_state():
 		collision_mask = 1
 		sleeping = false
 
-func press():
+func press(obstacle_distance: float):
 	pass
 
-func press_held(delta: float):
+func press_held(delta: float, obstacle_distance: float):
 	pass
 	
-func release():
+func release(obstacle_distance: float):
 	pass
