@@ -28,7 +28,7 @@ animation_curve = SubResource("Curve_tospe")
 animation_duration = 0.3
 ammo = 3
 projectile_scene = ExtResource("10_70q7l")
-projectile_speed = 800.0
+projectile_speed = 1500.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("9_gm7d2")

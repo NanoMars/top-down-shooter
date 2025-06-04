@@ -1,8 +1,9 @@
 extends Item
 
-@export var break_threshold: float = 100.0
-@export var break_particles_speed_variation: float = 1.5
+@export var break_threshold: float = 60
+@export var break_particles_speed_variation: float = 3
 @export var break_particles_multiplier: float = 1.5
+@export var crate_contents: Array[PackedScene] = []
 
 func _ready() -> void:
 	contact_monitor = true
@@ -26,4 +27,10 @@ func break_and_drop(direction: Vector2 = Vector2.ZERO):
 	particles.initial_velocity_min = direction.length() * break_particles_multiplier
 	particles.initial_velocity_max = direction.length() * break_particles_speed_variation * break_particles_multiplier
 	particles.emitting = true
+
+	var selected_item: PackedScene = crate_contents.pick_random()
+	var item_instance: Node = selected_item.instantiate()
+	item_instance.global_position = global_position
+	get_tree().get_root().add_child(item_instance)
+	item_instance.linear_velocity = direction
 	queue_free()
