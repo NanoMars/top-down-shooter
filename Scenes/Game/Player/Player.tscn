@@ -18,7 +18,7 @@
 radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
-radius = 32.0624
+radius = 32.0
 
 [sub_resource type="Curve" id="Curve_i4nf8"]
 _data = [Vector2(0, 0.488322), 0.0, 2.70623, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0103806), -6.58546, 0.0, 0, 0]
@@ -28,6 +28,8 @@ point_count = 3
 motion_mode = 1
 script = ExtResource("1_3qydi")
 pick_up_collision_shape = NodePath("Area2D/CollisionShape2D")
+drop_impulse_strength = 350.0
+max_drop_time = 0.25
 kill_velocity_threshold = 400.0
 player_textures = Array[Texture]([ExtResource("2_75cta"), ExtResource("3_ckjsq"), ExtResource("4_66v2b"), ExtResource("5_32fjh")])
 hand_textures = Array[Texture]([ExtResource("6_tnxc6"), ExtResource("7_3j14s"), ExtResource("8_1dcqm"), ExtResource("9_sqpsa")])

@@ -3,6 +3,9 @@ extends RigidBody2D
 class_name Item
 
 var is_held := false
+var recent_holder: Node = null
+
+var remove_holder_distance: float = 100.0
 
 func _ready():
 	update_state()
@@ -22,6 +25,10 @@ func update_state():
 		collision_layer = 1
 		collision_mask = 1
 		sleeping = false
+
+func _process(_delta):
+	if recent_holder and recent_holder.global_position.distance_to(global_position) > remove_holder_distance:
+		recent_holder = null
 
 func press(obstacle_distance: float):
 	pass

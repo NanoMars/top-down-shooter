@@ -2,6 +2,7 @@ extends Item
 
 @export var break_threshold: float = 100.0
 @export var break_particles_speed_variation: float = 1.5
+@export var break_particles_multiplier: float = 1.5
 
 func _ready() -> void:
 	contact_monitor = true
@@ -12,7 +13,7 @@ func _on_body_entered(body: Node) -> void:
 	var other_velocity = body.get_linear_velocity() if body.has_method("get_linear_velocity") else Vector2.ZERO
 	var relative_velocity = (linear_velocity - other_velocity).length()
 	print("Relative velocity: ", relative_velocity)
-	if relative_velocity > break_threshold:
+	if relative_velocity > break_threshold and body != recent_holder:
 		await get_tree().process_frame
 		break_and_drop(linear_velocity - other_velocity)
 
@@ -22,7 +23,7 @@ func break_and_drop(direction: Vector2 = Vector2.ZERO):
 	get_tree().get_root().add_child(particles)
 	particles.global_position = global_position
 	particles.direction = -direction.normalized()
-	particles.initial_velocity_min = direction.length()
-	particles.initial_velocity_max = direction.length() * break_particles_speed_variation
+	particles.initial_velocity_min = direction.length() * break_particles_multiplier
+	particles.initial_velocity_max = direction.length() * break_particles_speed_variation * break_particles_multiplier
 	particles.emitting = true
 	queue_free()

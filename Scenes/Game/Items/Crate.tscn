@@ -10,8 +10,9 @@ size = Vector2(42.0002, 41.9998)
 
 [node name="RigidBody2D" instance=ExtResource("1_i6kyw")]
 script = ExtResource("2_qiomx")
-break_threshold = 100.0
+break_threshold = 80.0
 break_particles_speed_variation = 3.0
+break_particles_multiplier = 1.5
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_6ekhb")
@@ -23,6 +24,8 @@ shape = SubResource("RectangleShape2D_qiomx")
 [node name="CPUParticles2D" parent="." index="2"]
 position = Vector2(0, 0)
 texture = ExtResource("4_qiomx")
+emission_shape = 3
+emission_rect_extents = Vector2(21, 21)
 spread = 60.0
 initial_velocity_min = 300.0
 initial_velocity_max = 600.0

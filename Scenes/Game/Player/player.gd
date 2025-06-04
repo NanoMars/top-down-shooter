@@ -29,7 +29,7 @@ var dropped_items: Array = []
 
 @export var drop_impulse_strength: float = 200.0
 @export var max_drop_time := 0.5
-@export var hold_drop_multiplier := 8
+@export var hold_drop_multiplier := 16
 @export var kill_velocity_threshold := 100.0
 
 @export var death_particles_speed_variation: float = 2
@@ -147,6 +147,7 @@ func drop_item(speed: float = 0.0):
 
 	speed = (max(min(speed, max_drop_time), 0.0) * hold_drop_multiplier) + 1
 
+	current_item.recent_holder = self
 	current_item.set_held_state(false)
 	var item = current_item
 	current_item = null
