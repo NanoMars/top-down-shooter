@@ -59,9 +59,12 @@ tile_set = ExtResource("3_flgk0")
 
 [node name="RigidBody2D3" parent="." instance=ExtResource("7_vifcx")]
 position = Vector2(358, 507)
+break_particles_speed_variation = 1.5
 
 [node name="RigidBody2D4" parent="." instance=ExtResource("7_vifcx")]
 position = Vector2(602, 373)
+break_particles_speed_variation = 1.5
 
 [node name="RigidBody2D5" parent="." instance=ExtResource("7_vifcx")]
 position = Vector2(268, 379)
+break_particles_speed_variation = 1.5

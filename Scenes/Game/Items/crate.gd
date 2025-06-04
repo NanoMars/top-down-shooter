@@ -1,7 +1,7 @@
 extends Item
 
 @export var break_threshold: float = 30
-@export var break_particles_speed_variation: float = 3
+@export var break_particles_speed_variation: float = 1.5
 @export var break_particles_multiplier: float = 1.5
 @export var crate_contents: Array[PackedScene] = []
 
@@ -19,6 +19,8 @@ func _on_body_entered(body: Node) -> void:
 		break_and_drop(linear_velocity - other_velocity)
 
 func break_and_drop(direction: Vector2 = Vector2.ZERO):
+	var angle = direction.angle()
+	direction = Vector2(cos(angle), sin(angle)) * 300 if direction.length() > 300 else direction
 	var particles: CPUParticles2D = $CPUParticles2D
 	remove_child(particles)
 	get_tree().get_root().add_child(particles)

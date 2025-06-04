@@ -165,6 +165,8 @@ func drop_item(speed: float = 0.0):
 	dropped_items.append(item)
 
 func kill(direction: Vector2 = Vector2.ZERO):
+	var angle = direction.angle()
+	direction = Vector2(cos(angle), sin(angle)) * 300 if direction.length() > 300 else direction
 	var particles: CPUParticles2D = $CPUParticles2D
 	remove_child(particles)
 	get_tree().get_root().add_child(particles)

@@ -12,7 +12,7 @@ size = Vector2(42.0002, 41.9998)
 [node name="RigidBody2D" instance=ExtResource("1_i6kyw")]
 script = ExtResource("2_qiomx")
 break_threshold = 30.0
-break_particles_speed_variation = 3.0
+break_particles_speed_variation = 1.5
 break_particles_multiplier = 1.5
 crate_contents = Array[PackedScene]([ExtResource("3_ocrun")])
 
