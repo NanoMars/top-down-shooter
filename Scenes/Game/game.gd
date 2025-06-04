@@ -13,4 +13,14 @@ func _ready() -> void:
 		var player_id = PlayerManager.joined_players[controller_id]
 
 		if spawn_points.has(player_id - 1):
-			spawn_points[player_id - 1].spawn_player(3, player_id, controller_id)
+			spawn_player(6.5, player_id, controller_id)
+
+func _on_player_died(controller_id: int, player_id: int) -> void:
+	var spawn_point = spawn_points[player_id - 1]
+	if spawn_point:
+		var player = await spawn_point.spawn_player(3, player_id, controller_id)
+		player.died.connect(_on_player_died)
+
+func spawn_player(time: float, player_id: int, controller_id: int):
+	var player = await spawn_points[player_id - 1].spawn_player(time, player_id, controller_id)
+	player.died.connect(_on_player_died)

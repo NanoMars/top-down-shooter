@@ -1,6 +1,7 @@
 # player.gd
 extends CharacterBody2D
 var controller_id: int = -1
+var player_id: int = -1
 const DEADZONE := 0.1
 
 var current_item: Node = null
@@ -29,6 +30,8 @@ var holding_use := false
 var holding_drop := false
 
 var holding_drop_time := 0.5
+
+signal died(controller_id: int, player_id: int)
 
 
 func _ready() -> void:
@@ -141,5 +144,7 @@ func kill(direction: Vector2 = Vector2.ZERO):
 	particles.initial_velocity_min = direction.length()
 	particles.initial_velocity_max = direction.length() * death_particles_speed_variation
 	particles.emitting = true
+	drop_item(0.0)
+	emit_signal("died", controller_id, player_id)
 	queue_free()
 	

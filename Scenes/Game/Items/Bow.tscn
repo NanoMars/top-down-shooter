@@ -20,7 +20,7 @@ radius = 7.0
 height = 40.0
 
 [node name="RigidBody2D" instance=ExtResource("1_tev6l")]
-scale = Vector2(1.00395, 1)
+angular_damp = 25.1
 script = ExtResource("2_pc8pi")
 empty_texture = ExtResource("9_gm7d2")
 animation_textures = Array[Texture]([ExtResource("3_tospe"), ExtResource("4_gm7d2"), ExtResource("5_70q7l"), ExtResource("6_se4th"), ExtResource("7_o0wmy"), ExtResource("8_l880y")])

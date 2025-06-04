@@ -26,6 +26,7 @@ point_count = 2
 
 [node name="RigidBody2D" type="RigidBody2D"]
 linear_damp = 10.0
+angular_damp = 25.0
 script = ExtResource("1_636x8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
