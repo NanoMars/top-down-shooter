@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp5jmne6lay2g"]
 
-[ext_resource type="Script" uid="uid://xvf8fp7t5dv4" path="res://Scenes/Game/Items/item_example.gd" id="1_636x8"]
+[ext_resource type="Script" uid="uid://xvf8fp7t5dv4" path="res://Game/Items/item_example.gd" id="1_636x8"]
 [ext_resource type="Texture2D" uid="uid://q8caclgol07n" path="res://Assets/Party Popper.png" id="2_cyddd"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_modij"]

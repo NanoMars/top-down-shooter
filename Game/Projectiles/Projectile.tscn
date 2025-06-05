@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b35q5vj436vhq"]
 
-[ext_resource type="Texture2D" uid="uid://cq1qefhiomr3s" path="res://Assets/Bow/Pencil.png" id="1_kp0cs"]
+[ext_resource type="Texture2D" uid="uid://cq1qefhiomr3s" path="res://Assets/Bow/Pencil.png" id="1_ab07i"]
 
 [node name="RigidBody2D" type="RigidBody2D"]
 mass = 0.1
@@ -9,7 +9,7 @@ angular_damp = 25.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("1_kp0cs")
+texture = ExtResource("1_ab07i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, -4, -16, 4, 11, 4, 18, 0, 11, -4)

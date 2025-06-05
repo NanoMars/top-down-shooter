@@ -1,16 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://bgbw30t3t305q"]
+[gd_scene load_steps=7 format=4 uid="uid://bgbw30t3t305q"]
 
-[ext_resource type="Script" uid="uid://cwhxbda5javsl" path="res://Scenes/Game/game.gd" id="1_qikps"]
-[ext_resource type="PackedScene" uid="uid://di4furit0fybd" path="res://Scenes/Game/Player/Player.tscn" id="2_i1e5p"]
-[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Scenes/Game/Items/item.tscn" id="3_ciybh"]
-[ext_resource type="TileSet" uid="uid://cxp7vgw20wyxk" path="res://Scenes/game.tres" id="3_flgk0"]
-[ext_resource type="PackedScene" uid="uid://bp7vvm4pad43o" path="res://Scenes/Game/Items/Bow.tscn" id="4_i1e5p"]
-[ext_resource type="PackedScene" uid="uid://cnxht1kseyl6x" path="res://Scenes/Game/Player/spawn_point.tscn" id="5_flgk0"]
-[ext_resource type="PackedScene" uid="uid://b78ynr3t8xgwi" path="res://Scenes/Game/Items/Crate.tscn" id="7_vifcx"]
+[ext_resource type="Script" uid="uid://cwhxbda5javsl" path="res://Game/game_mode.gd" id="1_qikps"]
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="3_ciybh"]
+[ext_resource type="TileSet" uid="uid://cxp7vgw20wyxk" path="res://Assets/game.tres" id="3_flgk0"]
+[ext_resource type="PackedScene" uid="uid://bp7vvm4pad43o" path="res://Game/Items/Bow.tscn" id="4_i1e5p"]
+[ext_resource type="PackedScene" uid="uid://cnxht1kseyl6x" path="res://Game/Player/spawn_point.tscn" id="5_flgk0"]
+[ext_resource type="PackedScene" uid="uid://b78ynr3t8xgwi" path="res://Game/Items/Crate.tscn" id="7_vifcx"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qikps")
-player_character = ExtResource("2_i1e5p")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -101
@@ -59,12 +57,9 @@ tile_set = ExtResource("3_flgk0")
 
 [node name="RigidBody2D3" parent="." instance=ExtResource("7_vifcx")]
 position = Vector2(358, 507)
-break_particles_speed_variation = 1.5
 
 [node name="RigidBody2D4" parent="." instance=ExtResource("7_vifcx")]
 position = Vector2(602, 373)
-break_particles_speed_variation = 1.5
 
 [node name="RigidBody2D5" parent="." instance=ExtResource("7_vifcx")]
 position = Vector2(268, 379)
-break_particles_speed_variation = 1.5

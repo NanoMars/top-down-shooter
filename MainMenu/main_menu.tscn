@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://biofo7dy64asf" path="res://Assets/logo/logo.png" id="1_48xlc"]
 [ext_resource type="Script" uid="uid://rpgvmmvlfauk" path="res://scripts/logo_animation.gd" id="2_1ehe0"]
-[ext_resource type="Script" uid="uid://b36ecxw5085c5" path="res://Scenes/MainMenu/player_menu.gd" id="3_1ehe0"]
-[ext_resource type="PackedScene" uid="uid://b8lnhgpiyfuxp" path="res://Scenes/MainMenu/player_section.tscn" id="4_0qgbs"]
-[ext_resource type="Script" uid="uid://baucwsjy2tpo1" path="res://Scenes/MainMenu/join_label.gd" id="5_adu2g"]
+[ext_resource type="Script" uid="uid://b36ecxw5085c5" path="res://MainMenu/player_menu.gd" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://b8lnhgpiyfuxp" path="res://MainMenu/player_section.tscn" id="4_0qgbs"]
+[ext_resource type="Script" uid="uid://baucwsjy2tpo1" path="res://MainMenu/join_label.gd" id="5_adu2g"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
