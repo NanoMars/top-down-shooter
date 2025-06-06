@@ -9,9 +9,10 @@ func _ready() -> void:
 		score_ui_instance.player_id = player_id
 		score_ui_container.add_child(score_ui_instance)
 		score_ui_instance.update_score(0)
+		score_ui_instance.update_texture()
 	
 	position = Vector2(0, 0)
-	
+
 
 
 func update_score(player_id: int, score: int) -> void:
@@ -20,3 +21,4 @@ func update_score(player_id: int, score: int) -> void:
 			child.update_score(score)
 			return
 
+	

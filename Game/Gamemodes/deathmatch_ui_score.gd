@@ -10,6 +10,8 @@ var offset: float = 0.0
 
 var player_id: int = 1
 
+	
+
 func update_score(score: int) -> void:
 	if score_label and icon_rect and player_id != -1:
 		score_label.text = str(score)
@@ -28,3 +30,7 @@ func _process(delta: float) -> void:
 		score_label.scale.y = 1 + offset
 		print("offset: ", offset)
 
+func update_texture() -> void:
+	if icon_rect:
+		var texture = ColourPalette.get_player_texture(player_id - 1)
+		icon_rect.texture = texture
