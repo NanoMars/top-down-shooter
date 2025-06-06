@@ -17,6 +17,7 @@ func _ready() -> void:
 	for player_id in PlayerManager.joined_players.values():
 		player_scores[player_id] = 0
 
-		var ui = deathmatch_ui.instantiate()
-		ui.player_id = player_id
+	var ui = deathmatch_ui.instantiate()
+	add_child(ui)
+		
 	
