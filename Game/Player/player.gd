@@ -83,7 +83,7 @@ func _physics_process(delta):
 			var relative_velocity = (velocity - other_velocity).length()
 			if relative_velocity > kill_velocity_threshold:
 				await get_tree().process_frame
-				kill(velocity - other_velocity)
+				kill(velocity - other_velocity, collider)
 
 
 	var aim_input: Vector2 = Vector2(
@@ -178,7 +178,7 @@ func kill(direction: Vector2 = Vector2.ZERO, other: Node = null):
 	particles.initial_velocity_max = direction.length() * death_particles_speed_variation
 	particles.emitting = true
 	drop_item(0.0)
-	if other.get_meta("kill_owner") != null:
+	if other != null and other.get_meta("kill_owner") != null:
 		var killer_player_id = other.get_meta("kill_owner")
 		if killer_player_id != player_id and killer_player_id != -1:
 			emit_signal("died", controller_id, player_id, killer_player_id)

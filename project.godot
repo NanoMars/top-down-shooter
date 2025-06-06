@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/fancy_editor_sounds/plugin.cfg", "res://
 
 player_spawns=""
 obstacles=""
+game_root=""
 
 [layer_names]
 

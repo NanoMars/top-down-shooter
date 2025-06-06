@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://symkawjy038p" path="res://Game/Gamemodes/deathmatch_ui_score.tscn" id="1_jpy70"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("score_ui_container")]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

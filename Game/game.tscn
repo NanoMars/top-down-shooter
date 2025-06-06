@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dlm37i7i1a65j" path="res://Game/Gamemodes/deathmatch_ui.tscn" id="7_oomkl"]
 [ext_resource type="PackedScene" uid="uid://b78ynr3t8xgwi" path="res://Game/Items/Crate.tscn" id="7_vifcx"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" groups=["game_root"]]
 script = ExtResource("1_qmv3x")
+gamemode_ui = ExtResource("7_oomkl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -101
@@ -64,8 +65,3 @@ position = Vector2(602, 373)
 
 [node name="RigidBody2D5" parent="." instance=ExtResource("7_vifcx")]
 position = Vector2(268, 379)
-
-[node name="Control" parent="." instance=ExtResource("7_oomkl")]
-custom_minimum_size = Vector2(1920, 1080)
-offset_right = 1920.0
-offset_bottom = 1080.0

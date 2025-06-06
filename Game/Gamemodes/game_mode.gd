@@ -7,10 +7,17 @@ class_name GameMode
 var spawn_points: Dictionary = {}
 
 @export var game_start_delay: float = 1.5
+@export var gamemode_ui: PackedScene
+var gamemode_ui_instance: Node = null
+
 
 func _ready() -> void:
+	print("game_mode.gd ready")
+	gamemode_ui_instance = gamemode_ui.instantiate()
+	add_child(gamemode_ui_instance)
 	for node in get_tree().get_nodes_in_group("player_spawns"):
 		spawn_points[node.player_color] = node
+	print("Spawn points:", spawn_points)
 
 	for controller_id in PlayerManager.joined_players:
 		var player_id = PlayerManager.joined_players[controller_id]
