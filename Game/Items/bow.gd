@@ -24,6 +24,7 @@ func release(obstacle_distance: float):
 		get_tree().get_root().add_child(projectile)
 		projectile.global_position = global_position
 		projectile.rotation = global_rotation
+		projectile.set_meta("kill_owner", holder_player_id)
 		projectile.apply_impulse(Vector2(cos(global_rotation), sin(global_rotation)) * projectile_speed)
 		ammo -= 1
 		progress = 0.0

@@ -142,8 +142,10 @@ func _finalize_pick_up(item: Node):
 	item_marker.add_child(item)
 	item.position = Vector2.ZERO
 	item.rotation = 0
+	current_item.set_meta("kill_owner", player_id)
 
 	current_item.set_held_state(true)
+	
 
 func drop_item(speed: float = 0.0):
 	if not current_item:
