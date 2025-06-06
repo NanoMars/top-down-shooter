@@ -51,7 +51,7 @@ var holding_drop := false
 
 var holding_drop_time := 0.5
 
-signal died(controller_id: int, player_id: int)
+signal died(controller_id: int, player_id: int, kill_attribution_player_id: int)
 
 
 func _ready() -> void:
@@ -166,7 +166,7 @@ func drop_item(speed: float = 0.0):
 	item.apply_impulse(Vector2(cos(rotation), sin(rotation)) * drop_impulse_strength * speed)
 	dropped_items.append(item)
 
-func kill(direction: Vector2 = Vector2.ZERO):
+func kill(direction: Vector2 = Vector2.ZERO, other: Node = null):
 	var angle = direction.angle()
 	direction = Vector2(cos(angle), sin(angle)) * 300 if direction.length() > 300 else direction
 	var particles: CPUParticles2D = $CPUParticles2D
@@ -178,7 +178,12 @@ func kill(direction: Vector2 = Vector2.ZERO):
 	particles.initial_velocity_max = direction.length() * death_particles_speed_variation
 	particles.emitting = true
 	drop_item(0.0)
-	emit_signal("died", controller_id, player_id)
+	if other.get_meta("kill_owner") != null:
+		var killer_player_id = other.get_meta("kill_owner")
+		if killer_player_id != player_id and killer_player_id != -1:
+			emit_signal("died", controller_id, player_id, killer_player_id)
+	else:
+		emit_signal("died", controller_id, player_id, -1)
 	queue_free()
 	
 func update_colour():

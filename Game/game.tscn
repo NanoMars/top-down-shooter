@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://bgbw30t3t305q"]
 
-[ext_resource type="Script" uid="uid://cwhxbda5javsl" path="res://Game/game_mode.gd" id="1_qikps"]
+[ext_resource type="Script" uid="uid://gsaw2dt0y5gh" path="res://Game/Gamemodes/deathmatch.gd" id="1_qmv3x"]
 [ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="3_ciybh"]
 [ext_resource type="TileSet" uid="uid://cxp7vgw20wyxk" path="res://Assets/game.tres" id="3_flgk0"]
 [ext_resource type="PackedScene" uid="uid://bp7vvm4pad43o" path="res://Game/Items/Bow.tscn" id="4_i1e5p"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b78ynr3t8xgwi" path="res://Game/Items/Crate.tscn" id="7_vifcx"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_qikps")
+script = ExtResource("1_qmv3x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -101

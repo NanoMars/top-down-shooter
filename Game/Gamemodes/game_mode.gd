@@ -23,8 +23,7 @@ func _ready() -> void:
 
 
 func _on_player_died(controller_id: int, player_id: int, killer_player_id: int) -> void:
-	respawn_player(controller_id, player_id)
-
+	pass
 func start_game() -> void:
 	print("Game started")
 	pass
