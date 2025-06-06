@@ -1,14 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlm37i7i1a65j"]
+[gd_scene load_steps=3 format=3 uid="uid://dlm37i7i1a65j"]
 
+[ext_resource type="Script" uid="uid://c6w6i1eq05ecb" path="res://Game/Gamemodes/deathmatch_ui.gd" id="1_6jcyx"]
 [ext_resource type="PackedScene" uid="uid://symkawjy038p" path="res://Game/Gamemodes/deathmatch_ui_score.tscn" id="1_jpy70"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("score_ui_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6jcyx")
+score_ui = ExtResource("1_jpy70")
+score_ui_container = NodePath("MarginContainer/CenterContainer/HBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -27,7 +31,4 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" parent="MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("1_jpy70")]
 layout_mode = 2
