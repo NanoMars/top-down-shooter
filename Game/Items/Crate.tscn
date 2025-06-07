@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiomx"]
 size = Vector2(42.0002, 41.9998)
 
-[node name="RigidBody2D" instance=ExtResource("1_i6kyw")]
+[node name="RigidBody2D" groups=["crates"] instance=ExtResource("1_i6kyw")]
 script = ExtResource("2_qiomx")
 break_threshold = 30.0
 break_particles_speed_variation = 1.5

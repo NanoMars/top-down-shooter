@@ -1,17 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://bgbw30t3t305q"]
+[gd_scene load_steps=5 format=4 uid="uid://bgbw30t3t305q"]
 
 [ext_resource type="Script" uid="uid://gsaw2dt0y5gh" path="res://Game/Gamemodes/deathmatch.gd" id="1_qmv3x"]
-[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="3_ciybh"]
 [ext_resource type="TileSet" uid="uid://cxp7vgw20wyxk" path="res://Assets/game.tres" id="3_flgk0"]
-[ext_resource type="PackedScene" uid="uid://bp7vvm4pad43o" path="res://Game/Items/Bow.tscn" id="4_i1e5p"]
 [ext_resource type="PackedScene" uid="uid://cnxht1kseyl6x" path="res://Game/Player/spawn_point.tscn" id="5_flgk0"]
 [ext_resource type="PackedScene" uid="uid://dlm37i7i1a65j" path="res://Game/Gamemodes/deathmatch_ui.tscn" id="7_oomkl"]
-[ext_resource type="PackedScene" uid="uid://b78ynr3t8xgwi" path="res://Game/Items/Crate.tscn" id="7_vifcx"]
 
 [node name="Node2D" type="Node2D" groups=["game_root"]]
 script = ExtResource("1_qmv3x")
 gamemode_ui = ExtResource("7_oomkl")
-round_duration = 15.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -101
@@ -28,9 +24,12 @@ tile_map_data = PackedByteArray("AAABAAEAAAABAAAAAAABAAIAAAABAAEAAAABAAMAAAABAAE
 tile_set = ExtResource("3_flgk0")
 collision_enabled = false
 
-[node name="RigidBody2D" parent="." instance=ExtResource("3_ciybh")]
-position = Vector2(348, 195)
-linear_damp = 5.0
+[node name="TileMapLayer2" type="TileMapLayer" parent="." groups=["obstacles"]]
+z_index = -100
+z_as_relative = false
+scale = Vector2(0.6, 0.6)
+tile_map_data = PackedByteArray("AAAQAAMAAAAKAAIAAGAQAAQAAAAJAAUAAAAQAAUAAAAKAAEAAGAQAAYAAAAJAAAAAGARAAYAAAAJAAUAAGASAAYAAAAJAAUAADATAAYAAAAKAAAAADAUAAYAAAAKAAEAACAJAAUAAAAKAAUAAFAJAAQAAAAKAAAAAFAJAAYAAAAJAAEAADAIAAYAAAAKAAAAADAJAAMAAAAKAAEAAHAKAAkAAAALAAcAAAAIAAkAAAALAAcAAAAKAAwAAAALAAYAAAAHAAsAAAALAAUAAAAEAAwAAAALAAcAAAADAAkAAAALAAcAAAALAAsAAAANAAcAAAAPAAkAAAAJAAIAAAAQAAgAAAAJAAIAAAAPAAoAAAAKAAAAAGARAAgAAAAKAAAAAAARAAkAAAAMAAMAAAASAAgAAAAKAAEAAAAPAAsAAAAKAAEAAEAHAAYAAAAMAAIAAAA=")
+tile_set = ExtResource("3_flgk0")
 
 [node name="RedSpawn" parent="." instance=ExtResource("5_flgk0")]
 position = Vector2(450, 318)
@@ -46,23 +45,3 @@ player_color = 2
 [node name="GreenSpawn" parent="." instance=ExtResource("5_flgk0")]
 position = Vector2(1436, 867)
 player_color = 3
-
-[node name="RigidBody2D2" parent="." instance=ExtResource("4_i1e5p")]
-position = Vector2(162, 222)
-angular_damp = 0.0
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="." groups=["obstacles"]]
-z_index = -100
-z_as_relative = false
-scale = Vector2(0.6, 0.6)
-tile_map_data = PackedByteArray("AAAQAAMAAAAKAAIAAGAQAAQAAAAJAAUAAAAQAAUAAAAKAAEAAGAQAAYAAAAJAAAAAGARAAYAAAAJAAUAAGASAAYAAAAJAAUAADATAAYAAAAKAAAAADAUAAYAAAAKAAEAACAJAAUAAAAKAAUAAFAJAAQAAAAKAAAAAFAJAAYAAAAJAAEAADAIAAYAAAAKAAAAADAJAAMAAAAKAAEAAHAKAAkAAAALAAcAAAAIAAkAAAALAAcAAAAKAAwAAAALAAYAAAAHAAsAAAALAAUAAAAEAAwAAAALAAcAAAADAAkAAAALAAcAAAALAAsAAAANAAcAAAAPAAkAAAAJAAIAAAAQAAgAAAAJAAIAAAAPAAoAAAAKAAAAAGARAAgAAAAKAAAAAAARAAkAAAAMAAMAAAASAAgAAAAKAAEAAAAPAAsAAAAKAAEAAEAHAAYAAAAMAAIAAAA=")
-tile_set = ExtResource("3_flgk0")
-
-[node name="RigidBody2D3" parent="." instance=ExtResource("7_vifcx")]
-position = Vector2(358, 507)
-
-[node name="RigidBody2D4" parent="." instance=ExtResource("7_vifcx")]
-position = Vector2(602, 373)
-
-[node name="RigidBody2D5" parent="." instance=ExtResource("7_vifcx")]
-position = Vector2(268, 379)

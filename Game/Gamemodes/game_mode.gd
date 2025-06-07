@@ -4,6 +4,7 @@ class_name GameMode
 
 @onready var player_character: PackedScene = preload("res://Game/Player/Player.tscn")
 @export var finish_scene: NodePath = NodePath("res://MainMenu/main_menu.tscn")
+@onready var box_spawner_scene: PackedScene = preload("res://Game/BoxSpawner.tscn")
 
 var spawn_points: Dictionary = {}
 
@@ -11,11 +12,15 @@ var spawn_points: Dictionary = {}
 @export var gamemode_ui: PackedScene
 var gamemode_ui_instance: Node = null
 @export var round_duration: float = 180
+@export var box_spawn_goal: int = 7
+@export var box_spawn_delay: float = 1
+@export var initial_boxes: int = 4
 var round_time: float
 var game_started: bool = false
+var box_timer = 0
 
 func _process(delta: float) -> void:
-	if game_started:
+	if get_tree() and game_started:
 		round_time = max(0, round_time - delta)
 		#print("Round time left:", round_time)	
 		if round_time <= 0:
@@ -23,6 +28,26 @@ func _process(delta: float) -> void:
 				get_tree().change_scene_to_file(finish_scene)
 			else:
 				push_error("finish scene fialed to load")
+		box_timer += delta
+		var crate_nodes = get_tree().get_nodes_in_group("crates")
+		var crate_count: int = 0
+		if crate_nodes:
+			crate_count = crate_nodes.size()
+
+		var spawn_factor = float(crate_count) / float(box_spawn_goal)
+		spawn_factor = clamp(spawn_factor, 0.0, 1.0)
+
+		var spawn_delay = box_spawn_delay * pow(3, spawn_factor + 1)
+
+		print("waiting ", spawn_delay, "seconds. current time:", box_timer, "seconds")
+		if  box_timer >= spawn_delay:
+			var box_spawner_instance = box_spawner_scene.instantiate()
+			box_spawner_instance.global_position = Vector2(randf() * 1920, randf() * 1080)
+			get_tree().get_nodes_in_group("game_root")[0].add_child(box_spawner_instance)
+			box_spawner_instance.spawn_box(1)
+			box_timer = 0
+
+		
 
 func _ready() -> void:
 	round_time = round_duration
@@ -38,6 +63,12 @@ func _ready() -> void:
 
 		if spawn_points.has(player_id - 1):
 			spawn_player(game_start_delay, player_id, controller_id)
+
+	for i in range(initial_boxes):
+		var box_spawner_instance = box_spawner_scene.instantiate()
+		box_spawner_instance.global_position = Vector2(randf() * 1920, randf() * 1080)
+		get_tree().get_nodes_in_group("game_root")[0].add_child(box_spawner_instance)
+		box_spawner_instance.spawn_box(1)
 
 	await get_tree().create_timer(game_start_delay).timeout
 	start_game()
