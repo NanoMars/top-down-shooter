@@ -94,3 +94,16 @@ text = "Press any button to join!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 382.0
+offset_right = 1837.0
+offset_bottom = 610.0
+rotation = -0.174533
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "THERE IS NO KEYBOARD & MOUSE INPUT. AT LEAST TWO CONTROLLERS REQUIRED!"
+horizontal_alignment = 1
+autowrap_mode = 2
