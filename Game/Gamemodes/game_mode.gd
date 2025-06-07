@@ -3,15 +3,29 @@ extends Node2D
 class_name GameMode
 
 @onready var player_character: PackedScene = preload("res://Game/Player/Player.tscn")
+@export var finish_scene: NodePath = NodePath("res://MainMenu/main_menu.tscn")
 
 var spawn_points: Dictionary = {}
 
 @export var game_start_delay: float = 1.5
 @export var gamemode_ui: PackedScene
 var gamemode_ui_instance: Node = null
+@export var round_duration: float = 180
+var round_time: float
+var game_started: bool = false
 
+func _process(delta: float) -> void:
+	if game_started:
+		round_time = max(0, round_time - delta)
+		#print("Round time left:", round_time)	
+		if round_time <= 0:
+			if finish_scene:
+				get_tree().change_scene_to_file(finish_scene)
+			else:
+				push_error("finish scene fialed to load")
 
 func _ready() -> void:
+	round_time = round_duration
 	print("game_mode.gd ready")
 	gamemode_ui_instance = gamemode_ui.instantiate()
 	add_child(gamemode_ui_instance)
@@ -33,6 +47,7 @@ func _on_player_died(controller_id: int, player_id: int, killer_player_id: int) 
 	pass
 
 func start_game() -> void:
+	game_started = true
 	print("Game started")
 	pass
 

@@ -2,6 +2,7 @@ extends Control
 
 @export var score_ui: PackedScene
 @export var score_ui_container: Control
+@export var clock_label: Label
 
 func _ready() -> void:
 	for player_id in PlayerManager.joined_players.values():

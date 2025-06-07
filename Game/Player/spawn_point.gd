@@ -25,7 +25,7 @@ func spawn_player(spawn_time: float, player_id: int, controller_id: int):
 	player_instance.controller_id = controller_id
 	player_instance.player_id = player_id
 	player_instance.global_position = global_position
-	get_tree().get_root().add_child(player_instance)
+	get_tree().get_nodes_in_group("game_root")[0].add_child(player_instance)
 
 	call_deferred("_bounce_out")
 	return player_instance
