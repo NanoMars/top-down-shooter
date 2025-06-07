@@ -20,14 +20,17 @@ var game_started: bool = false
 var box_timer = 0
 
 func _process(delta: float) -> void:
+	if round_time <= 0:
+			if finish_scene:
+				get_tree().change_scene_to_file(finish_scene)
+				return
+			else:
+				push_error("finish scene fialed to load")
+
 	if get_tree() and game_started:
 		round_time = max(0, round_time - delta)
 		#print("Round time left:", round_time)	
-		if round_time <= 0:
-			if finish_scene:
-				get_tree().change_scene_to_file(finish_scene)
-			else:
-				push_error("finish scene fialed to load")
+		
 		box_timer += delta
 		var crate_nodes = get_tree().get_nodes_in_group("crates")
 		var crate_count: int = 0
